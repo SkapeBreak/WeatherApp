@@ -8,27 +8,22 @@
 	flex-direction: column;
 }
 
-.iconWrapper {
-	width: 75px;
-	height: 75px;
-}
-
-.iconTemp {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-}
-
 .hourlyWeather {
 	width: 90%;
-	height: 250px;
+	height: 100%;
+	/* display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column; */
 	/* border: 1px solid white; */
 }
 
 .dailyWeather {
 	width: 90%;
-	height: 250px;
+	height: 100%;
+	/* display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column; */
 	/* border: 1px solid white; */
 }

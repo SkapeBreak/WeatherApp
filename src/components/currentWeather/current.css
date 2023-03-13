@@ -1,0 +1,12 @@
+.iconWrapper {
+	width: 75px;
+	height: 75px;
+}
+
+.iconTemp {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}

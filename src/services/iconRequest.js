@@ -16,3 +16,8 @@ function addMapping(values, icon) {
 		ICON_MAP.set(value, icon);
 	});
 }
+
+export const getIconUrl = (iconCode) => {
+	const linkToIcon = `../../assets/${ICON_MAP.get(iconCode)}.svg`;
+	return linkToIcon;
+};
