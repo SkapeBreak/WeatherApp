@@ -1,29 +1,46 @@
 .hero {
-	height: 100vh;
+	/* min-height: 100vh; */
 	background: #222831;
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	padding: 1rem;
+	gap: 30px;
 }
 
-.hourlyWeather {
-	width: 90%;
+.sectionontainer {
+	width: 100%;
 	height: 100%;
-	/* display: flex;
+}
+.sectionontainer h4 {
+	width: fit-content;
+	/* margin-left: 2%; */
+	/* border: 1px solid red; */
+}
+.hourlyWeather {
+	width: 100%;
+	height: 100%;
+	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex-direction: column; */
-	/* border: 1px solid white; */
+	/* padding: 0rem 1rem; */
+	/* padding-left: 28%; */
+	/* align-items: center; */
+	flex-direction: row;
+	/* border: 1px solid red; */
+	overflow: hidden;
+	overflow-x: auto;
 }
 
 .dailyWeather {
-	width: 90%;
+	width: 100%;
 	height: 100%;
-	/* display: flex;
+	display: flex;
 	justify-content: center;
-	align-items: center;
-	flex-direction: column; */
-	/* border: 1px solid white; */
+	/* align-items: center; */
+	flex-direction: row;
+	/* border: 1px solid red; */
+	overflow: hidden;
+	overflow-x: auto;
 }

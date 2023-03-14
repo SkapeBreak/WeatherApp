@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { getIconUrl } from '../../services/iconRequest';
 import { appContext } from '../../contexts/AppContext';
 import './current.css';
 
 export default function Current() {
-	const { currentWeatherData } = useContext(appContext);
+	const { currentWeatherData, areaName } = useContext(appContext);
+	console.log(currentWeatherData);
 	return (
 		<>
 			<h1>
-				Current Weather <br /> Calgary, AB
+				Current Weather <br /> {areaName}
 			</h1>
 			<div className='iconTemp'>
 				<div className='iconWrapper'>
@@ -20,8 +21,11 @@ export default function Current() {
 				</div>
 				<h2>{currentWeatherData?.currentTemp}</h2>
 			</div>
-			<h3>Feels Like: {currentWeatherData?.lowFeelsLike}</h3>
-			<h2>Winds Spped: {currentWeatherData?.windSpeed} Km/hr</h2>
+			<h3>Feels Like: {currentWeatherData?.highFeelsLike}</h3>
+			<h2>
+				Winds Spped:
+				<br /> {currentWeatherData?.windSpeed} Km/hr
+			</h2>
 		</>
 	);
 }

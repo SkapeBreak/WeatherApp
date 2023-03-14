@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createContext } from 'react';
-// import { makeWeatherRequest } from '../services/weatherApiRequest';
 import {
 	parseCurrentWeather,
 	parseDailyWeather,
@@ -14,8 +13,9 @@ const AppContext = ({ children }) => {
 	const [days, setDays] = useState([]);
 	const [hours, setHours] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const latitude = 51.188373; // replace with your latitude coordinate
-	const longitude = -114.0674; // replace with your longitude coordinate
+	const [latitude, setLatitude] = useState(null);
+	const [longitude, setLongitude] = useState(null);
+	const [areaName, setAreaName] = useState('');
 
 	const makeWeatherRequest = (lat, lon, timezone) => {
 		setLoading(true);
@@ -39,17 +39,52 @@ const AppContext = ({ children }) => {
 	};
 
 	useEffect(() => {
-		const unsubscribe = makeWeatherRequest(
-			latitude,
-			longitude,
-			Intl.DateTimeFormat().resolvedOptions().timeZone
-		);
+		if (!latitude && !longitude) {
+			const success = (position) => {
+				setLatitude(position.coords.latitude);
+				setLongitude(position.coords.longitude);
+			};
 
-		// Stop listening for updates when the component unmounts
-		return () => {
-			unsubscribe();
-		};
+			const error = () => {
+				console.error('Unable to retrieve your location');
+			};
+
+			navigator.geolocation.getCurrentPosition(success, error);
+		}
 	}, []);
+
+	useEffect(() => {
+		if (latitude && longitude) {
+			makeWeatherRequest(
+				latitude,
+				longitude,
+				Intl.DateTimeFormat().resolvedOptions().timeZone
+			);
+		}
+	}, [latitude, longitude]);
+
+	const getLocationName = async (latitude, longitude) => {
+		try {
+			const response = await axios.get(
+				`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyC6GHDA3lPtw-L_yKfNEkdWpGZVMw9o4MM`
+			);
+			const locationName = response.data.results[0].formatted_address;
+			return locationName;
+		} catch (error) {
+			console.error(error);
+		}
+	};
+	useEffect(() => {
+		if (latitude && longitude) {
+			getLocationName(latitude, longitude).then((res) => setAreaName(res));
+		}
+	}, [latitude, longitude]);
+
+	// console.log(currentWeatherData);
+	// const getLocationName(latitude, longitude).then((res) => {
+	// 	setAreaName(res);
+	// 	console.log(res);
+	// });
 
 	const appStates = {
 		setCurrentWeatherData,
@@ -60,6 +95,7 @@ const AppContext = ({ children }) => {
 		hours,
 		loading,
 		setLoading,
+		areaName,
 	};
 
 	return (

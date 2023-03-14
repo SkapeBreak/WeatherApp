@@ -1,6 +1,6 @@
-.day {
+.hour {
 	min-height: 150px;
-	min-width: 37px;
+	min-width: 50px;
 	background: #868b94;
 	padding: 0.5rem;
 	/* border: 1px solid white; */
@@ -8,9 +8,4 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-}
-
-#formatted-day {
-	font-size: 9px;
-	font-weight: 700;
 }
