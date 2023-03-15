@@ -5,7 +5,6 @@ import './current.css';
 
 export default function Current() {
 	const { currentWeatherData, areaName } = useContext(appContext);
-	console.log(currentWeatherData);
 	return (
 		<>
 			<h1>

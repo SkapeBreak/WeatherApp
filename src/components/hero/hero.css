@@ -10,6 +10,15 @@
 	gap: 30px;
 }
 
+.loading {
+	background: #222831;
+	min-height: 100vh;
+	transition: opacity 3s ease-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .sectionontainer {
 	width: 100%;
 	height: 100%;
