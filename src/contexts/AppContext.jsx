@@ -66,7 +66,7 @@ const AppContext = ({ children }) => {
 	const getLocationName = async (latitude, longitude) => {
 		try {
 			const response = await axios.get(
-				`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyC6GHDA3lPtw-L_yKfNEkdWpGZVMw9o4MM`
+				`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${process.env.MAPS_API_KEY}`
 			);
 			const locationName = response.data.results[0].formatted_address;
 			return locationName;
