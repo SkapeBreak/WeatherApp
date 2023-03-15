@@ -81,13 +81,6 @@ const AppContext = ({ children }) => {
 			getLocationName(latitude, longitude).then((res) => setAreaName(res));
 		}
 	}, [latitude, longitude]);
-
-	// console.log(currentWeatherData);
-	// const getLocationName(latitude, longitude).then((res) => {
-	// 	setAreaName(res);
-	// 	console.log(res);
-	// });
-
 	const appStates = {
 		setCurrentWeatherData,
 		currentWeatherData,

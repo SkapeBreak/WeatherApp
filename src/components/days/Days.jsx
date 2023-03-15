@@ -3,6 +3,7 @@ import './days.css';
 
 export default function Days({ data }) {
 	const DAY_FROMATTER = new Intl.DateTimeFormat(undefined, { weekday: 'long' });
+	console.log(data);
 	return (
 		<>
 			<div className='day'>

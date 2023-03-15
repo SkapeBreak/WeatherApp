@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './hero.css';
 import { appContext } from '../../contexts/AppContext';
 import Days from '../days/Days';
@@ -7,13 +7,10 @@ import Hours from '../hours/Hours';
 import Spinner from '../spinner/Spinner';
 
 export default function Hero() {
-	const { days, hours, loading, currentWeatherData } = useContext(appContext);
-	// console.log(hours);
+	const { days, hours, loading } = useContext(appContext);
 	return (
 		<>
-			{/* {!loading ? ( */}
-
-			<div className={`hero ${loading ? 'loading' : ''}`}>
+			<div className={`${loading ? 'loading' : 'hero '}`}>
 				{loading && <Spinner />}
 				{!loading && (
 					<>
@@ -21,9 +18,9 @@ export default function Hero() {
 							<Current />
 						</div>
 						<div className='sectionontainer'>
-							<h4>5 days</h4>
+							<h3>Daily</h3>
 							<div className='dailyWeather'>
-								{days?.map((day) => (
+								{days?.slice(1)?.map((day) => (
 									<>
 										<Days data={day} key={day?.timestamp} />
 									</>
@@ -31,9 +28,9 @@ export default function Hero() {
 							</div>
 						</div>
 						<div className='sectionontainer'>
-							<h4>hourly</h4>
+							<h3>Hourly</h3>
 							<div className='hourlyWeather'>
-								{hours?.slice(0, 24)?.map((hour) => (
+								{hours?.slice(1, 24)?.map((hour) => (
 									<>
 										<Hours data={hour} />
 									</>
@@ -43,12 +40,6 @@ export default function Hero() {
 					</>
 				)}
 			</div>
-			{/* // ) : ( //{' '}
-			<div className='loading'>
-				// <Spinner />
-				//{' '} */}
-			{/* </div> */}
-			{/* // )} */}
 		</>
 	);
 }

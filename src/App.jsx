@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppContext from './contexts/AppContext';
-import Hero from './components/hero/Hero';
+import Home from './pages/Home';
 
 function App() {
 	return (
@@ -8,7 +8,7 @@ function App() {
 			<AppContext>
 				<Router>
 					<Routes>
-						<Route path='/' element={<Hero />} />
+						<Route path='/' element={<Home />} />
 					</Routes>
 				</Router>
 			</AppContext>

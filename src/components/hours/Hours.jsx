@@ -21,13 +21,25 @@ export default function Hours({ data }) {
 					width={20}
 					height={20}
 				/>
-				<p>{data?.temp}</p>
-				<p>{data?.feelsLike}</p>
 				<p>
-					{data?.windSpeed} <br /> Km/hr
+					Feels Like
+					<br />
+					{data?.feelsLike}
 				</p>
 				<p>
-					P.O.P <br /> {data?.precip} %
+					High
+					<br />
+					{data?.temp}
+				</p>
+				<p>
+					{data?.windSpeed}
+					<br />
+					Km/h
+				</p>
+				<p>
+					P.O.P
+					<br />
+					{data?.precip} %
 				</p>
 			</div>
 		</>
