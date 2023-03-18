@@ -17,6 +17,12 @@ const AppContext = ({ children }) => {
 	const [longitude, setLongitude] = useState(null);
 	const [areaName, setAreaName] = useState('');
 
+	const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+	const toggleTheme = () => {
+		setIsDarkTheme(!isDarkTheme);
+	};
+
 	const makeWeatherRequest = (lat, lon, timezone) => {
 		setLoading(true);
 		const URL =
@@ -91,6 +97,9 @@ const AppContext = ({ children }) => {
 		loading,
 		setLoading,
 		areaName,
+		isDarkTheme,
+		setIsDarkTheme,
+		toggleTheme,
 	};
 
 	return (

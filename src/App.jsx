@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AppContext from './contexts/AppContext';
 import Home from './pages/Home';

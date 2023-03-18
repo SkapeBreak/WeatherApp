@@ -7,13 +7,18 @@ import Hours from '../hours/Hours';
 import Spinner from '../spinner/Spinner';
 
 export default function Hero() {
-	const { days, hours, loading } = useContext(appContext);
+	const { days, hours, loading, isDarkTheme, toggleTheme } =
+		useContext(appContext);
 	return (
 		<>
-			<div className={`${loading ? 'loading' : 'hero '}`}>
-				{loading && <Spinner />}
-				{!loading && (
-					<>
+			{loading && (
+				<div className='loading'>
+					<Spinner />
+				</div>
+			)}
+			{!loading && (
+				<>
+					<div className={`hero ${isDarkTheme ? 'dark' : 'light'}`}>
 						<div className='mainContent'>
 							<Current />
 						</div>
@@ -37,9 +42,17 @@ export default function Hero() {
 								))}
 							</div>
 						</div>
-					</>
-				)}
-			</div>
+					</div>
+				</>
+			)}
+			<button
+				className={`customButton ${isDarkTheme ? 'light' : 'dark'}`}
+				onClick={() => {
+					toggleTheme();
+				}}
+			>
+				<span>{isDarkTheme ? 'Dark Theme' : 'Light Theme'}</span>
+			</button>
 		</>
 	);
 }
