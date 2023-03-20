@@ -1,6 +1,6 @@
 .footer {
 	width: 100%;
-	background: url('../../assets/aboutBackground.png');
+	background: url('../../assets/projectsBackground.jpg');
 	background-position: center;
 	background-size: cover;
 	background-repeat: repeat;
@@ -9,4 +9,5 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: white;
 }

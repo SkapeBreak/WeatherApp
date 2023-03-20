@@ -11,40 +11,6 @@ export default function Hero() {
 		useContext(appContext);
 	return (
 		<>
-			{loading && (
-				<div className='loading'>
-					<Spinner />
-				</div>
-			)}
-			{!loading && (
-				<>
-					<div className={`hero ${isDarkTheme ? 'dark' : 'light'}`}>
-						<div className='mainContent'>
-							<Current />
-						</div>
-						<div className='sectionontainer'>
-							<h3>Daily</h3>
-							<div className='dailyWeather'>
-								{days?.slice(1)?.map((day) => (
-									<>
-										<Days data={day} key={day?.timestamp} />
-									</>
-								))}
-							</div>
-						</div>
-						<div className='sectionontainer'>
-							<h3>Hourly</h3>
-							<div className='hourlyWeather'>
-								{hours?.slice(1, 24)?.map((hour) => (
-									<>
-										<Hours data={hour} />
-									</>
-								))}
-							</div>
-						</div>
-					</div>
-				</>
-			)}
 			<button
 				className={`customButton ${isDarkTheme ? 'light' : 'dark'}`}
 				onClick={() => {
@@ -53,6 +19,38 @@ export default function Hero() {
 			>
 				<span>{isDarkTheme ? 'Dark Theme' : 'Light Theme'}</span>
 			</button>
+			{loading && (
+				<div className={`loading ${isDarkTheme ? 'dark' : 'light'}`}>
+					<Spinner />
+				</div>
+			)}
+			{!loading && (
+				<div className={`hero ${isDarkTheme ? 'dark' : 'light'}`}>
+					<div className=''>
+						<Current />
+					</div>
+					<div className='sectionontainer'>
+						<h3>Daily</h3>
+						<div className='dailyWeather'>
+							{days?.slice(1)?.map((day) => (
+								<>
+									<Days data={day} key={day?.timestamp} />
+								</>
+							))}
+						</div>
+					</div>
+					<div className='sectionontainer'>
+						<h3>Hourly</h3>
+						<div className='hourlyWeather'>
+							{hours?.slice(1, 24)?.map((hour) => (
+								<>
+									<Hours data={hour} />
+								</>
+							))}
+						</div>
+					</div>
+				</div>
+			)}
 		</>
 	);
 }
